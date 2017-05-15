@@ -35,26 +35,26 @@ characteristic:特征.<br>
 ##### 2.蓝牙4.0分为两种模式<br>
 - 中心模式流程<br>
 1.建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`<br>
-2. 扫描外设 `cancelPeripheralConnection`<br>
-3. 发现外设 `didDiscoverPeripheral`<br>
-4. 连接外设 `connectPeripheral`<br>
-  4.1 连接失败 `didFailToConnectPeripheral`<br>
-  4.2 连接断开 `didDisconnectPeripheral`<br>
-  4.3 连接成功 `didConnectPeripheral`<br>
-5. 扫描外设中的服务 `discoverServices`<br>
-  5.1 发现并获取外设中的服务 `didDiscoverServices`<br>
-6. 扫描外设对应服务的特征 `discoverCharacteristics`<br>
-  6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`<br>
-  6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`<br>
-7. 订阅特征的通知 `setNotifyValue:forCharacteristic:`<br>
-  7.1 根据特征读取数据 `didUpdateValueForCharacteristic`<br>
+2.扫描外设 `cancelPeripheralConnection`<br>
+3.发现外设 `didDiscoverPeripheral`<br>
+4.连接外设 `connectPeripheral`<br>
+  4.1连接失败 `didFailToConnectPeripheral`<br>
+  4.2连接断开 `didDisconnectPeripheral`<br>
+  4.3连接成功 `didConnectPeripheral`<br>
+5.扫描外设中的服务 `discoverServices`<br>
+  5.1发现并获取外设中的服务 `didDiscoverServices`<br>
+6.扫描外设对应服务的特征 `discoverCharacteristics`<br>
+  6.1发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`<br>
+  6.2给对应特征写数据 `writeValue:forCharacteristic:type:`<br>
+7.订阅特征的通知 `setNotifyValue:forCharacteristic:`<br>
+  7.1根据特征读取数据 `didUpdateValueForCharacteristic`<br>
 - 外设模式流程<br>
-1. 建立外设角色<br>
-2. 设置本地外设的服务和特征<br>
-3. 发布外设和特征<br>
-4. 广播服务<br>
-5. 响应中心的读写请求<br>
-6. 发送更新的特征值，订阅中心<br>
+1.建立外设角色<br>
+2.设置本地外设的服务和特征<br>
+3.发布外设和特征<br>
+4.广播服务<br>
+5.响应中心的读写请求<br>
+6.发送更新的特征值，订阅中心<br>
 ### 六.蓝牙4.0开发步骤<br>
 1. 本文采用中心模式
 导入CoreBluetooth框架,`#import <CoreBluetooth/CoreBluetooth.h>`
