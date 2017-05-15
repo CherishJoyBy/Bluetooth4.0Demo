@@ -35,7 +35,7 @@ characteristic:特征.<br>
 ##### 2.蓝牙4.0分为两种模式<br>
 - 中心模式流程
 
-  1.建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`
+    1.建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`
     
   2.扫描外设 `cancelPeripheralConnection`
     
