@@ -38,7 +38,7 @@ characteristic:特征.<br>
 2.扫描外设 `cancelPeripheralConnection`<br>
 3.发现外设 `didDiscoverPeripheral`<br>
 4.连接外设 `connectPeripheral`<br>
-  4.1 连接失败 `didFailToConnectPeripheral`<br>
+    4.1连接失败 `didFailToConnectPeripheral`<br>
   4.2 连接断开 `didDisconnectPeripheral`<br>
   4.3 连接成功 `didConnectPeripheral`<br>
 5.扫描外设中的服务 `discoverServices`<br>
