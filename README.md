@@ -122,7 +122,7 @@ return _peripherals;
 }
 ```
 5. 扫描设备之前会调用中心管理者状态改变的方法
-```
+```objc
 // 当状态更新时调用(如果不实现会崩溃)
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
