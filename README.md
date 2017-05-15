@@ -96,7 +96,7 @@ _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 return _centralManager;
 }
 ```
-创建存储设备数组
+- 创建存储设备数组
 ```
 - (NSMutableArray *)peripherals
 {
@@ -152,7 +152,7 @@ break;
 }
 }
 ```
-扫描设备
+- 扫描设备
 ```
 // 扫描设备
 - (IBAction)scanForPeripherals
@@ -198,8 +198,8 @@ self.cbPeripheral = peripheral;
 }
 }
 ```
-7. 连接的三种状态,如果连接成功,则扫描所有服务(也可以扫描指定服务)
-连接失败重连
+7. 连接的三种状态,如果连接成功,则扫描所有服务(也可以扫描指定服务)<br>
+- 连接失败重连
 ```
 /**
 连接失败
@@ -217,7 +217,7 @@ if ([peripheral.name isEqualToString:kBlePeripheralName])
 }
 }
 ```
-连接断开重连
+- 连接断开重连
 ```
 /**
 连接断开
@@ -235,7 +235,7 @@ if ([peripheral.name isEqualToString:kBlePeripheralName])
 }
 }
 ```
-连接成功并扫描服务
+- 连接成功并扫描服务
 ```
 /**
 连接成功
