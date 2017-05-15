@@ -43,11 +43,11 @@ characteristic:特征.<br>
     
   4.连接外设 `connectPeripheral`
 
-  4.1 连接失败 `didFailToConnectPeripheral`
+    4.1 连接失败 `didFailToConnectPeripheral`
     
-  4.2 连接断开 `didDisconnectPeripheral`
+    4.2 连接断开 `didDisconnectPeripheral`
 
-  4.3 连接成功 `didConnectPeripheral`
+    4.3 连接成功 `didConnectPeripheral`
 
   5.扫描外设中的服务 `discoverServices`
 
@@ -55,13 +55,13 @@ characteristic:特征.<br>
   
   6.扫描外设对应服务的特征 `discoverCharacteristics`
 
-    6.1发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
+    6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
   
-    6.2给对应特征写数据 `writeValue:forCharacteristic:type:`
+    6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`
   
   7.订阅特征的通知 `setNotifyValue:forCharacteristic:`
 
-    7.1根据特征读取数据 `didUpdateValueForCharacteristic`
+    7.1 根据特征读取数据 `didUpdateValueForCharacteristic`
   
 - 外设模式流程<br>
 1.建立外设角色<br>
