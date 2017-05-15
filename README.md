@@ -43,11 +43,11 @@ characteristic:特征.<br>
     
   4.连接外设 `connectPeripheral`
 
-    4.1 连接失败 `didFailToConnectPeripheral`
+    4.1连接失败 `didFailToConnectPeripheral`
+    
+    4.2连接断开 `didDisconnectPeripheral`
 
-    4.2 连接断开 `didDisconnectPeripheral`
-
-    4.3 连接成功 `didConnectPeripheral`
+    4.3连接成功 `didConnectPeripheral`
 
   5.扫描外设中的服务 `discoverServices`
 
@@ -55,13 +55,13 @@ characteristic:特征.<br>
   
   6.扫描外设对应服务的特征 `discoverCharacteristics`
 
-    6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
+    6.1发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
   
-    6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`
+    6.2给对应特征写数据 `writeValue:forCharacteristic:type:`
   
   7.订阅特征的通知 `setNotifyValue:forCharacteristic:`
 
-    7.1 根据特征读取数据 `didUpdateValueForCharacteristic`
+    7.1根据特征读取数据 `didUpdateValueForCharacteristic`
   
 - 外设模式流程<br>
 1.建立外设角色<br>
@@ -75,7 +75,7 @@ characteristic:特征.<br>
 导入CoreBluetooth框架,`#import <CoreBluetooth/CoreBluetooth.h>`
 2. 遵守`CBCentralManagerDelegate,CBPeripheralDelegate`协议
 3. 添加属性
-```
+```objc
 // 中心管理者(管理设备的扫描和连接)
 @property (nonatomic, strong) CBCentralManager *centralManager;
 // 存储的设备
@@ -88,7 +88,7 @@ characteristic:特征.<br>
 @property (nonatomic, assign) CBManagerState peripheralState;
 ```
 - 常量,具体服务和特征是读还是写的类型,问公司硬件厂商,或者问同事.
-```
+```objc
 // 蓝牙4.0设备名
 static NSString * const kBlePeripheralName = @"公司硬件蓝牙名称";
 // 通知服务
@@ -101,7 +101,7 @@ static NSString * const kNotifyCharacteristicUUID = @"FFE2";
 static NSString * const kWriteCharacteristicUUID = @"FFE3";
 ```
 4. 创建中心管理者
-```
+```objc
 - (CBCentralManager *)centralManager
 {
 if (!_centralManager)
@@ -112,7 +112,7 @@ return _centralManager;
 }
 ```
 - 创建存储设备数组
-```
+```objc
 - (NSMutableArray *)peripherals
 {
 if (!_peripherals) {
@@ -168,7 +168,7 @@ break;
 }
 ```
 - 扫描设备
-```
+```objc
 // 扫描设备
 - (IBAction)scanForPeripherals
 {
@@ -183,7 +183,7 @@ if (self.peripheralState ==  CBManagerStatePoweredOn)
 }
 ```
 6. 扫描到设备并开始连接
-```
+```objc
 /**
 扫描到设备
 
@@ -215,7 +215,7 @@ self.cbPeripheral = peripheral;
 ```
 7. 连接的三种状态,如果连接成功,则扫描所有服务(也可以扫描指定服务)<br>
 - 连接失败重连
-```
+```objc
 /**
 连接失败
 
@@ -233,7 +233,7 @@ if ([peripheral.name isEqualToString:kBlePeripheralName])
 }
 ```
 - 连接断开重连
-```
+```objc
 /**
 连接断开
 
@@ -251,7 +251,7 @@ if ([peripheral.name isEqualToString:kBlePeripheralName])
 }
 ```
 - 连接成功并扫描服务
-```
+```objc
 /**
 连接成功
 
@@ -270,7 +270,7 @@ peripheral.delegate = self;
 }
 ```
 8. 发现服务并扫描服务对应的特征
-```
+```objc
 /**
 扫描到服务
 
@@ -293,7 +293,7 @@ if ([service.UUID.UUIDString isEqualToString:kWriteServerUUID] || [service.UUID.
 }
 ```
 9. 扫描到对应的特征,写入特征的值,并订阅指定的特征通知.
-```
+```objc
 /**
 扫描到对应的特征
 
@@ -331,7 +331,7 @@ if ([characteristic.UUID.UUIDString isEqualToString:kNotifyCharacteristicUUID])
 }
 ```
 10. 根据特征读取到数据
-```
+```objc
 /**
 根据特征读到数据
 
@@ -349,7 +349,7 @@ NSLog(@"%@",data);
 }
 ```
 读取值打印结果:
-```
+```objc
 2017-04-25 12:34:41.876974+0800 蓝牙4.0Demo[1745:346611] <9f5436>
 2017-04-25 12:34:41.983016+0800 蓝牙4.0Demo[1745:346611] <8f5440>
 2017-04-25 12:34:42.154821+0800 蓝牙4.0Demo[1745:346611] <9f5649>
