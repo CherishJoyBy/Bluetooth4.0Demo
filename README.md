@@ -1,4 +1,4 @@
-# Bluetooth4.0Demo
+# Bluetooth4.0Demo<br>
 ### 本篇介绍了蓝牙的简单使用<br>
 ### 一.蓝牙概念<br>
 蓝牙2.0为传统蓝牙,传统蓝牙也称为经典蓝牙.<br>
@@ -18,7 +18,7 @@
 4. 说明<br>
 对于小的硬件厂商来说,MFI认证通过几率不大,不仅耗钱还耗时,所以,还是推荐使用蓝牙4.0.<br>
 (MFI:Make for ipad ,iphone, itouch 专们为苹果设备制作的设备)<br>
-### 四.问题描述
+### 四.问题描述<br>
 公司要求iOS端需要和钢琴进行蓝牙连接并进行数据通信,我以为钢琴是蓝牙4.0,然后快速集成CoreBluetooth框架写了一个demo,扫描外设时,没有发现钢琴的蓝牙名称,可是用iphone打开系统设置,可以发现钢琴对应的蓝牙.问了安卓的同事,得知钢琴的蓝牙只有2.0的模块,所以,安卓端是用2.0蓝牙进行交互的.公司决定不做MFI认证,改用蓝牙4.0.在与硬件厂商交涉的过程中,得知钢琴中的蓝牙是4.0的,但是,他们在设计蓝牙板子的时候,没有集成低功耗技术.之后,板子寄回硬件厂商,添加BLE模块.这才踏上蓝牙4.0的正轨.
 ### 五.蓝牙4.0使用解析<br>
 ##### 1.基本知识<br>
@@ -33,8 +33,7 @@ characteristic:特征.<br>
 如图所示:<br>
 ![设备、服务、特征关系图](http://upload-images.jianshu.io/upload_images/3284707-81760679eadba37e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480)<br>
 ##### 2.蓝牙4.0分为两种模式<br>
-- 中心模式流程
-<br>
+- 中心模式流程<br>
 1. 建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`<br>
 2. 扫描外设 `cancelPeripheralConnection`<br>
 3. 发现外设 `didDiscoverPeripheral`<br>
@@ -48,7 +47,7 @@ characteristic:特征.<br>
   6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`<br>
   6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`<br>
 7. 订阅特征的通知 `setNotifyValue:forCharacteristic:`<br>
-  7.1 根据特征读取数据 `didUpdateValueForCharacteristic` <br>
+  7.1 根据特征读取数据 `didUpdateValueForCharacteristic`<br>
 - 外设模式流程<br>
 1. 建立外设角色<br>
 2. 设置本地外设的服务和特征<br>
