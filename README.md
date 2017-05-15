@@ -1,17 +1,21 @@
 # Bluetooth4.0Demo
 蓝牙4.0简单使用demo
+<br>
 ###本篇介绍了蓝牙的简单使用
+<br>
 ###一.蓝牙概念
 蓝牙2.0为传统蓝牙,传统蓝牙也称为经典蓝牙.
 蓝牙4.0因为低耗电,所以也叫做低功耗蓝(BLE).它将三种规格集一体，包括传统蓝牙技术、高速技术和低耗能技术.
+<br>
 ###二.BLE支持两种部署方式
 1. 双模式
 低功耗蓝牙功能集成在现有的经典蓝牙控制器中，或在现有经典蓝牙技术芯片上`增加低功耗堆栈`，整体架构基本不变，因此成本增加有限.
 2. 单模式
 面向高度集成、紧凑的设备，使用一个轻量级连接层(Link Layer)提供超低功耗的待机模式操作、简单设备恢复和可靠的点对多点数据传输，还能让联网传感器在蓝牙传输中安排好低功耗蓝牙流量的次序，同时还有高级节能和安全加密连接.
-
+<br>
 ###三.蓝牙各版本使用选择
 1. 蓝牙2.0,不上架
+<br>
 使用私有API,手机需要越狱.
 2. 蓝牙2.0,要上架
 进行MFI认证,使用ExternalAccessory框架.手机不需要越狱.
@@ -23,7 +27,9 @@
 
 ###四.问题描述
 公司要求iOS端需要和钢琴进行蓝牙连接并进行数据通信,我以为钢琴是蓝牙4.0,然后快速集成CoreBluetooth框架写了一个demo,扫描外设时,没有发现钢琴的蓝牙名称,可是用iphone打开系统设置,可以发现钢琴对应的蓝牙.问了安卓的同事,得知钢琴的蓝牙只有2.0的模块,所以,安卓端是用2.0蓝牙进行交互的.公司决定不做MFI认证,改用蓝牙4.0.在与硬件厂商交涉的过程中,得知钢琴中的蓝牙是4.0的,但是,他们在设计蓝牙板子的时候,没有集成低功耗技术.之后,板子寄回硬件厂商,添加BLE模块.这才踏上蓝牙4.0的正轨.
+<br>
 ###五.蓝牙4.0使用解析
+<br>
 #####1.基本知识
 central:中心,连接硬件的设备.
 peripheral:外设,被连接的硬件.
@@ -33,31 +39,32 @@ peripheral:外设,被连接的硬件.
 service:服务,
 characteristic:特征
 说明:一个外设包含多个服务,而每一个服务中又包含多个特征,特征包括特征的值和特征的描述.每个服务包含多个字段,字段的权限有read(读)、write(写)、notify(通知).
+<br>
 ![设备、服务、特征关系图](http://upload-images.jianshu.io/upload_images/3284707-81760679eadba37e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480)
-
+<br>
 #####2.蓝牙4.0分为两种模式
 - 中心模式流程
-1. 建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`
-2. 扫描外设 `cancelPeripheralConnection`
-3. 发现外设 `didDiscoverPeripheral`
-4. 连接外设 `connectPeripheral`
-4.1 连接失败 `didFailToConnectPeripheral`
-4.2 连接断开 `didDisconnectPeripheral`
-4.3 连接成功 `didConnectPeripheral`
-5. 扫描外设中的服务 `discoverServices`
-5.1 发现并获取外设中的服务 `didDiscoverServices`
-6. 扫描外设对应服务的特征 `discoverCharacteristics`
-6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
-6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`
-7. 订阅特征的通知 `setNotifyValue:forCharacteristic:`
-7.1 根据特征读取数据 `didUpdateValueForCharacteristic` 
+  1. 建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`
+  2. 扫描外设 `cancelPeripheralConnection`
+  3. 发现外设 `didDiscoverPeripheral`
+  4. 连接外设 `connectPeripheral`
+    4.1 连接失败 `didFailToConnectPeripheral`
+    4.2 连接断开 `didDisconnectPeripheral`
+    4.3 连接成功 `didConnectPeripheral`
+  5. 扫描外设中的服务 `discoverServices`
+    5.1 发现并获取外设中的服务 `didDiscoverServices`
+  6. 扫描外设对应服务的特征 `discoverCharacteristics`
+    6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
+    6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`
+  7. 订阅特征的通知 `setNotifyValue:forCharacteristic:`
+    7.1 根据特征读取数据 `didUpdateValueForCharacteristic` 
 - 外设模式流程
-1. 建立外设角色
-2. 设置本地外设的服务和特征
-3. 发布外设和特征
-4. 广播服务
-5. 响应中心的读写请求
-6. 发送更新的特征值，订阅中心
+  1. 建立外设角色
+  2. 设置本地外设的服务和特征
+  3. 发布外设和特征
+  4. 广播服务
+  5. 响应中心的读写请求
+  6. 发送更新的特征值，订阅中心
 
 ###六.蓝牙4.0开发步骤
 1.本文采用中心模式
