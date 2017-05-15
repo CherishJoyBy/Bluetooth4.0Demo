@@ -43,15 +43,15 @@ characteristic:特征.<br>
     
   4.连接外设 `connectPeripheral`
 
-  - 4.1 连接失败 `didFailToConnectPeripheral`
+  - 4.1连接失败 `didFailToConnectPeripheral`
     
-  - 4.2 连接断开 `didDisconnectPeripheral`
+  - 4.2连接断开 `didDisconnectPeripheral`
 
-  - 4.3 连接成功 `didConnectPeripheral`
+  - 4.3连接成功 `didConnectPeripheral`
 
   5.扫描外设中的服务 `discoverServices`
 
-    5.1 发现并获取外设中的服务 `didDiscoverServices`
+    - 5.1发现并获取外设中的服务 `didDiscoverServices`
   
   6.扫描外设对应服务的特征 `discoverCharacteristics`
 
