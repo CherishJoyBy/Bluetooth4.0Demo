@@ -58,10 +58,10 @@ characteristic:特征.<br>
 5. 响应中心的读写请求<br>
 6. 发送更新的特征值，订阅中心<br>
 ### 六.蓝牙4.0开发步骤<br>
-1.本文采用中心模式<br>
-导入CoreBluetooth框架,`#import <CoreBluetooth/CoreBluetooth.h>`<br>
-2.遵守`CBCentralManagerDelegate,CBPeripheralDelegate`协议<br>
-3.添加属性<br>
+1. 本文采用中心模式
+导入CoreBluetooth框架,`#import <CoreBluetooth/CoreBluetooth.h>`
+2. 遵守`CBCentralManagerDelegate,CBPeripheralDelegate`协议
+3. 添加属性
 ```
 // 中心管理者(管理设备的扫描和连接)
 @property (nonatomic, strong) CBCentralManager *centralManager;
@@ -87,7 +87,7 @@ static NSString * const kNotifyCharacteristicUUID = @"FFE2";
 // 写特征值
 static NSString * const kWriteCharacteristicUUID = @"FFE3";
 ```
-4.创建中心管理者
+4. 创建中心管理者
 ```
 - (CBCentralManager *)centralManager
 {
@@ -108,7 +108,7 @@ _peripherals = [NSMutableArray array];
 return _peripherals;
 }
 ```
-5.扫描设备之前会调用中心管理者状态改变的方法
+5. 扫描设备之前会调用中心管理者状态改变的方法
 ```
 // 当状态更新时调用(如果不实现会崩溃)
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -169,7 +169,7 @@ if (self.peripheralState ==  CBManagerStatePoweredOn)
 }
 }
 ```
-6.扫描到设备并开始连接
+6. 扫描到设备并开始连接
 ```
 /**
 扫描到设备
@@ -200,7 +200,7 @@ self.cbPeripheral = peripheral;
 }
 }
 ```
-7.连接的三种状态,如果连接成功,则扫描所有服务(也可以扫描指定服务)
+7. 连接的三种状态,如果连接成功,则扫描所有服务(也可以扫描指定服务)
 连接失败重连
 ```
 /**
@@ -256,7 +256,7 @@ peripheral.delegate = self;
 [peripheral discoverServices:nil];
 }
 ```
-8.发现服务并扫描服务对应的特征
+8. 发现服务并扫描服务对应的特征
 ```
 /**
 扫描到服务
@@ -279,7 +279,7 @@ if ([service.UUID.UUIDString isEqualToString:kWriteServerUUID] || [service.UUID.
 }
 }
 ```
-9.扫描到对应的特征,写入特征的值,并订阅指定的特征通知.
+9. 扫描到对应的特征,写入特征的值,并订阅指定的特征通知.
 ```
 /**
 扫描到对应的特征
@@ -317,7 +317,7 @@ if ([characteristic.UUID.UUIDString isEqualToString:kNotifyCharacteristicUUID])
 }
 }
 ```
-10.根据特征读取到数据
+10. 根据特征读取到数据
 ```
 /**
 根据特征读到数据
