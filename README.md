@@ -72,7 +72,7 @@ characteristic:特征.<br>
 // 外设状态
 @property (nonatomic, assign) CBManagerState peripheralState;
 ```
-常量,具体服务和特征是读还是写的类型,问公司硬件厂商,或者问同事.
+- 常量,具体服务和特征是读还是写的类型,问公司硬件厂商,或者问同事.
 ```
 // 蓝牙4.0设备名
 static NSString * const kBlePeripheralName = @"公司硬件蓝牙名称";
