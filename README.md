@@ -37,7 +37,7 @@ characteristic:特征.<br>
 
     1.建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`
     
-  2.扫描外设 `cancelPeripheralConnection`
+    2.扫描外设 `cancelPeripheralConnection`
     
   3.发现外设 `didDiscoverPeripheral`
     
