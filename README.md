@@ -150,11 +150,11 @@ static NSString * const kWriteCharacteristicUUID = @"FFE3";
 ```objc
 - (CBCentralManager *)centralManager
 {
-if (!_centralManager)
-{
-_centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-}
-return _centralManager;
+    if (!_centralManager)
+    {
+        _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    }
+    return _centralManager;
 }
 ```
 - 创建存储设备数组
