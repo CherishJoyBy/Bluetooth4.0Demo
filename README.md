@@ -40,7 +40,7 @@
 
 ### 四.问题描述
 
-  公司要求iOS端需要和钢琴进行蓝牙连接并进行数据通信,我以为钢琴是蓝牙4.0,然后快速集成CoreBluetooth框架写了一个demo,扫描外设时,没有发现钢琴的蓝牙名称,可是用iphone打开系统设置,可以发现钢琴对应的蓝牙.问了安卓的同事,得知钢琴的蓝牙只有2.0的模块,所以,安卓端是用2.0蓝牙进行交互的.公司决定不做MFI认证,改用蓝牙4.0.在与硬件厂商交涉的过程中,得知钢琴中的蓝牙是4.0的,但是,他们在设计蓝牙板子的时候,没有集成低功耗技术.之后,板子寄回硬件厂商,添加BLE模块.这才踏上蓝牙4.0的正轨.
+公司要求iOS端需要和钢琴进行蓝牙连接并进行数据通信,我以为钢琴是蓝牙4.0,然后快速集成CoreBluetooth框架写了一个demo,扫描外设时,没有发现钢琴的蓝牙名称,可是用iphone打开系统设置,可以发现钢琴对应的蓝牙.问了安卓的同事,得知钢琴的蓝牙只有2.0的模块,所以,安卓端是用2.0蓝牙进行交互的.公司决定不做MFI认证,改用蓝牙4.0.在与硬件厂商交涉的过程中,得知钢琴中的蓝牙是4.0的,但是,他们在设计蓝牙板子的时候,没有集成低功耗技术.之后,板子寄回硬件厂商,添加BLE模块.这才踏上蓝牙4.0的正轨.
 
 ### 五.蓝牙4.0使用解析
 
@@ -78,7 +78,7 @@ characteristic:特征.
     
   4.连接外设 `connectPeripheral`
 
-  - 4.1连接失败 `didFailToConnectPeripheral`
+    4.1连接失败 `didFailToConnectPeripheral`
     
   - 4.2连接断开 `didDisconnectPeripheral`
 
@@ -116,7 +116,7 @@ characteristic:特征.
 
 1. 本文采用中心模式
 
-导入CoreBluetooth框架,`#import <CoreBluetooth/CoreBluetooth.h>`
+    导入CoreBluetooth框架,`#import <CoreBluetooth/CoreBluetooth.h>`
 
 2. 遵守`CBCentralManagerDelegate,CBPeripheralDelegate`协议
 
