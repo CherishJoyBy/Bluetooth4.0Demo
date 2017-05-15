@@ -33,7 +33,8 @@ characteristic:特征.<br>
 如图所示:<br>
 ![设备、服务、特征关系图](http://upload-images.jianshu.io/upload_images/3284707-81760679eadba37e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480)<br>
 ##### 2.蓝牙4.0分为两种模式<br>
-- 中心模式流程<br>
+- 中心模式流程
+
   1.建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`
     
   2.扫描外设 `cancelPeripheralConnection`
@@ -42,25 +43,25 @@ characteristic:特征.<br>
     
   4.连接外设 `connectPeripheral`
 
-  4.1 连接失败 `didFailToConnectPeripheral`
+    4.1 连接失败 `didFailToConnectPeripheral`
 
-  4.2 连接断开 `didDisconnectPeripheral`
+    4.2 连接断开 `didDisconnectPeripheral`
 
-  4.3 连接成功 `didConnectPeripheral`
+    4.3 连接成功 `didConnectPeripheral`
 
   5.扫描外设中的服务 `discoverServices`
 
-  5.1 发现并获取外设中的服务 `didDiscoverServices`
+    5.1 发现并获取外设中的服务 `didDiscoverServices`
   
   6.扫描外设对应服务的特征 `discoverCharacteristics`
 
-  6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
+    6.1 发现并获取外设对应服务的特征 `didDiscoverCharacteristicsForService`
   
-  6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`
+    6.2 给对应特征写数据 `writeValue:forCharacteristic:type:`
   
   7.订阅特征的通知 `setNotifyValue:forCharacteristic:`
 
-  7.1 根据特征读取数据 `didUpdateValueForCharacteristic`
+    7.1 根据特征读取数据 `didUpdateValueForCharacteristic`
   
 - 外设模式流程<br>
 1.建立外设角色<br>
