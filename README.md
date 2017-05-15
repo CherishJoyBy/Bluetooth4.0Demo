@@ -30,9 +30,9 @@ peripheral:外设,被连接的硬件.<br>
 service:服务.<br>
 characteristic:特征.<br>
 说明:一个外设包含多个服务,而每一个服务中又包含多个特征,特征包括特征的值和特征的描述.每个服务包含多个字段,字段的权限有read(读)、write(写)、notify(通知).<br>
+如图所示:<br>
 ![设备、服务、特征关系图](http://upload-images.jianshu.io/upload_images/3284707-81760679eadba37e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480)<br>
 ##### 2.蓝牙4.0分为两种模式<br>
-<br>
 - 中心模式流程
 <br>
 1. 建立中心角色 `[[CBCentralManager alloc] initWithDelegate:self queue:nil]`<br>
@@ -50,7 +50,6 @@ characteristic:特征.<br>
 7. 订阅特征的通知 `setNotifyValue:forCharacteristic:`<br>
   7.1 根据特征读取数据 `didUpdateValueForCharacteristic` <br>
 - 外设模式流程<br>
-<br>
 1. 建立外设角色<br>
 2. 设置本地外设的服务和特征<br>
 3. 发布外设和特征<br>
