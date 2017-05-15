@@ -43,9 +43,9 @@ characteristic:特征.<br>
     
   4.连接外设 `connectPeripheral`
 
-      4.1连接失败 `didFailToConnectPeripheral`
+     4.1连接失败 `didFailToConnectPeripheral`
     
-    4.2连接断开 `didDisconnectPeripheral`
+     4.2连接断开 `didDisconnectPeripheral`
 
     4.3连接成功 `didConnectPeripheral`
 
