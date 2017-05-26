@@ -402,5 +402,5 @@ advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumbe
 2017-04-25 12:34:42.239481+0800 蓝牙4.0Demo[1745:346611] <8f5640>
 ```
 提示:上Appstore下载LightBlue,进行蓝牙通信测试.
-<br>
-### 欢迎访问简书 : [o惜乐o](http://www.jianshu.com/p/b62081c427a4)
+
+### 欢迎访问简书 : [<iOS开发>之蓝牙使用](http://www.jianshu.com/p/b62081c427a4)
